@@ -15,6 +15,13 @@ public class Orden {
 	private String riesgoACubrir;
 	private String sumaAsegurada;
 	private String vigencia;
+	
+	/**
+	 * Instantiates a new orden.
+	 */
+	public Orden() {
+		super();
+	}
 
 	/**
 	 * Instantiates a new orden.
