@@ -19,6 +19,13 @@ public class Orden {
 
 	/**
 	 * Instantiates a new orden.
+	 */
+	public Orden() {
+		super();
+	}
+	
+	/**
+	 * Instantiates a new orden.
 	 *
 	 * @param idOrden the id orden
 	 * @param fechaRegistro the fecha registro

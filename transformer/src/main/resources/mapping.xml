@@ -1,6 +1,9 @@
-  <?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <workbook>
 	<worksheet name="Hoja4">
+		<section startRow="0" endRow="0">
+			<!-- TITULOS -->
+		</section>
 		<loop startRow="1" endRow="1" items="ordenes.orden" var="orden"
 			varType="org.gaviot.transformer.model.progreso.Orden">
 			<section startRow="1" endRow="1">
@@ -23,4 +26,3 @@
 		</loop>
 	</worksheet>
 </workbook>
-                
