@@ -1,9 +1,15 @@
 package org.gaviot.transformer.model.progreso;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * The Class Orden.
  */
 public class Orden {
+
+	private static String REGEX_PATTERN = "(.*)-(.*)";
+	Pattern pattern = Pattern.compile(REGEX_PATTERN);
 
 	private String ordenId;
 	private String solicitud;
@@ -15,7 +21,7 @@ public class Orden {
 	private String riesgoACubrir;
 	private String sumaAsegurada;
 	private String vigencia;
-	
+
 	/**
 	 * Instantiates a new orden.
 	 */
@@ -25,17 +31,27 @@ public class Orden {
 
 	/**
 	 * Instantiates a new orden.
-	 *
-	 * @param ordenId the orden id
-	 * @param solicitud the solicitud
-	 * @param apellidoNombre the apellido nombre
-	 * @param domicilio the domicilio
-	 * @param localidad the localidad
-	 * @param aseguradora the aseguradora
-	 * @param bienAsegurado the bien asegurado
-	 * @param riesgoACubrir the riesgo a cubrir
-	 * @param sumaAsegurada the suma asegurada
-	 * @param vigencia the vigencia
+	 * 
+	 * @param ordenId
+	 *            the orden id
+	 * @param solicitud
+	 *            the solicitud
+	 * @param apellidoNombre
+	 *            the apellido nombre
+	 * @param domicilio
+	 *            the domicilio
+	 * @param localidad
+	 *            the localidad
+	 * @param aseguradora
+	 *            the aseguradora
+	 * @param bienAsegurado
+	 *            the bien asegurado
+	 * @param riesgoACubrir
+	 *            the riesgo a cubrir
+	 * @param sumaAsegurada
+	 *            the suma asegurada
+	 * @param vigencia
+	 *            the vigencia
 	 */
 	public Orden(String ordenId, String solicitud, String apellidoNombre, String domicilio, String localidad,
 			String aseguradora, String bienAsegurado, String riesgoACubrir, String sumaAsegurada, String vigencia) {
@@ -54,7 +70,7 @@ public class Orden {
 
 	/**
 	 * Gets the orden id.
-	 *
+	 * 
 	 * @return the orden id
 	 */
 	public String getOrdenId() {
@@ -63,8 +79,9 @@ public class Orden {
 
 	/**
 	 * Sets the orden id.
-	 *
-	 * @param ordenId the new orden id
+	 * 
+	 * @param ordenId
+	 *            the new orden id
 	 */
 	public void setOrdenId(String ordenId) {
 		this.ordenId = ordenId;
@@ -72,7 +89,7 @@ public class Orden {
 
 	/**
 	 * Gets the solicitud.
-	 *
+	 * 
 	 * @return the solicitud
 	 */
 	public String getSolicitud() {
@@ -81,8 +98,9 @@ public class Orden {
 
 	/**
 	 * Sets the solicitud.
-	 *
-	 * @param solicitud the new solicitud
+	 * 
+	 * @param solicitud
+	 *            the new solicitud
 	 */
 	public void setSolicitud(String solicitud) {
 		this.solicitud = solicitud;
@@ -90,7 +108,7 @@ public class Orden {
 
 	/**
 	 * Gets the apellido nombre.
-	 *
+	 * 
 	 * @return the apellido nombre
 	 */
 	public String getApellidoNombre() {
@@ -99,8 +117,9 @@ public class Orden {
 
 	/**
 	 * Sets the apellido nombre.
-	 *
-	 * @param apellidoNombre the new apellido nombre
+	 * 
+	 * @param apellidoNombre
+	 *            the new apellido nombre
 	 */
 	public void setApellidoNombre(String apellidoNombre) {
 		this.apellidoNombre = apellidoNombre;
@@ -108,7 +127,7 @@ public class Orden {
 
 	/**
 	 * Gets the domicilio.
-	 *
+	 * 
 	 * @return the domicilio
 	 */
 	public String getDomicilio() {
@@ -117,8 +136,9 @@ public class Orden {
 
 	/**
 	 * Sets the domicilio.
-	 *
-	 * @param domicilio the new domicilio
+	 * 
+	 * @param domicilio
+	 *            the new domicilio
 	 */
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
@@ -126,7 +146,7 @@ public class Orden {
 
 	/**
 	 * Gets the localidad.
-	 *
+	 * 
 	 * @return the localidad
 	 */
 	public String getLocalidad() {
@@ -135,8 +155,9 @@ public class Orden {
 
 	/**
 	 * Sets the localidad.
-	 *
-	 * @param localidad the new localidad
+	 * 
+	 * @param localidad
+	 *            the new localidad
 	 */
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
@@ -144,7 +165,7 @@ public class Orden {
 
 	/**
 	 * Gets the aseguradora.
-	 *
+	 * 
 	 * @return the aseguradora
 	 */
 	public String getAseguradora() {
@@ -153,8 +174,9 @@ public class Orden {
 
 	/**
 	 * Sets the aseguradora.
-	 *
-	 * @param aseguradora the new aseguradora
+	 * 
+	 * @param aseguradora
+	 *            the new aseguradora
 	 */
 	public void setAseguradora(String aseguradora) {
 		this.aseguradora = aseguradora;
@@ -162,7 +184,7 @@ public class Orden {
 
 	/**
 	 * Gets the bien asegurado.
-	 *
+	 * 
 	 * @return the bien asegurado
 	 */
 	public String getBienAsegurado() {
@@ -171,8 +193,9 @@ public class Orden {
 
 	/**
 	 * Sets the bien asegurado.
-	 *
-	 * @param bienAsegurado the new bien asegurado
+	 * 
+	 * @param bienAsegurado
+	 *            the new bien asegurado
 	 */
 	public void setBienAsegurado(String bienAsegurado) {
 		this.bienAsegurado = bienAsegurado;
@@ -180,7 +203,7 @@ public class Orden {
 
 	/**
 	 * Gets the riesgo a cubrir.
-	 *
+	 * 
 	 * @return the riesgo a cubrir
 	 */
 	public String getRiesgoACubrir() {
@@ -189,8 +212,9 @@ public class Orden {
 
 	/**
 	 * Sets the riesgo a cubrir.
-	 *
-	 * @param riesgoACubrir the new riesgo a cubrir
+	 * 
+	 * @param riesgoACubrir
+	 *            the new riesgo a cubrir
 	 */
 	public void setRiesgoACubrir(String riesgoACubrir) {
 		this.riesgoACubrir = riesgoACubrir;
@@ -198,7 +222,7 @@ public class Orden {
 
 	/**
 	 * Gets the suma asegurada.
-	 *
+	 * 
 	 * @return the suma asegurada
 	 */
 	public String getSumaAsegurada() {
@@ -207,8 +231,9 @@ public class Orden {
 
 	/**
 	 * Sets the suma asegurada.
-	 *
-	 * @param sumaAsegurada the new suma asegurada
+	 * 
+	 * @param sumaAsegurada
+	 *            the new suma asegurada
 	 */
 	public void setSumaAsegurada(String sumaAsegurada) {
 		this.sumaAsegurada = sumaAsegurada;
@@ -216,7 +241,7 @@ public class Orden {
 
 	/**
 	 * Gets the vigencia.
-	 *
+	 * 
 	 * @return the vigencia
 	 */
 	public String getVigencia() {
@@ -225,14 +250,43 @@ public class Orden {
 
 	/**
 	 * Sets the vigencia.
-	 *
-	 * @param vigencia the new vigencia
+	 * 
+	 * @param vigencia
+	 *            the new vigencia
 	 */
 	public void setVigencia(String vigencia) {
 		this.vigencia = vigencia;
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * Gets the vigencia inicio.
+	 *
+	 * @return the vigencia inicio
+	 */
+	public String getVigenciaInicio() {
+		Matcher m = pattern.matcher(this.vigencia);
+		if (m.find()) {
+			return m.group(0).trim();
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the vigencia fin.
+	 *
+	 * @return the vigencia fin
+	 */
+	public String getVigenciaFin() {
+		Matcher m = pattern.matcher(this.vigencia);
+		if (m.find()) {
+			return m.group(1).trim();
+		}
+		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
