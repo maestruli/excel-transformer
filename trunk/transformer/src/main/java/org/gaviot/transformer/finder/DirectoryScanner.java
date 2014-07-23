@@ -1,87 +1,37 @@
 package org.gaviot.transformer.finder;
 
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
-import static com.google.common.collect.Sets.newLinkedHashSet;
-
 import java.io.File;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
 
-public final class DirectoryScanner {
+/**
+ * The Class DirectoryScanner.
+ */
+public class DirectoryScanner {
+	final static String XLS_EXTENSION = ".xls";
+	final static String XLSX_EXTENSION = ".xlsx";
 
-	enum FileTypePredicate implements Predicate<File> {
-		FILE {
-
-			public boolean apply(final File input) {
-				return input.isFile();
-			}
-		},
-		DIRECTORY {
-
-			public boolean apply(final File input) {
-				return input.isDirectory();
-			}
+	/**
+	 * Gets the excel files.
+	 *
+	 * @param path the path
+	 * @return the excel files
+	 */
+	public List<File> getExcelFiles(String path) {
+		List<File> ret = new ArrayList<File>();
+		File directory = new File(path);
+		IOFileFilter xlsFileFilter = FileFilterUtils.andFileFilter(FileFilterUtils.fileFileFilter(),
+				FileFilterUtils.suffixFileFilter(".xls"));
+		IOFileFilter xlsxFileFilter = FileFilterUtils.andFileFilter(FileFilterUtils.fileFileFilter(),
+				FileFilterUtils.suffixFileFilter(".xlsx"));
+		java.io.FileFilter fileFilter = FileFilterUtils.orFileFilter(xlsFileFilter, xlsxFileFilter);
+		File[] onlyFiles = directory.listFiles(fileFilter);
+		for (File f : onlyFiles) {
+			ret.add(f);
 		}
+		return ret;
 	}
-
-	public static DirectoryScanner forDirectory(final File baseDir) {
-		return new DirectoryScanner(baseDir);
-	}
-
-	public static DirectoryScanner forDirectory(final String baseDir) {
-		return forDirectory(new File(baseDir));
-	}
-
-	private final File baseDir;
-
-	private Predicate<File> directoryPredicate;
-
-	private Predicate<File> filePredicate;
-
-	private int maxDepth = -1;
-
-	DirectoryScanner(final File baseDir) {
-		checkArgument(checkNotNull(baseDir).isDirectory());
-		this.baseDir = baseDir;
-	}
-
-	public DirectoryScanner restrictDirectories(final Predicate<File> directoryPredicate) {
-		this.directoryPredicate = Predicates.and(FileTypePredicate.DIRECTORY, checkNotNull(directoryPredicate));
-		return this;
-	}
-
-	public DirectoryScanner restrictFiles(final Predicate<File> filePredicate) {
-		this.filePredicate = Predicates.and(FileTypePredicate.FILE, checkNotNull(filePredicate));
-		return this;
-	}
-
-	public DirectoryScanner maxScanDepth(final int maxDepth) {
-		this.maxDepth = maxDepth;
-		return this;
-	}
-
-	public Iterable<File> getFiles() {
-		final Collection<File> data = newLinkedHashSet();
-		scan(baseDir, data, 0);
-		return data;
-	}
-
-	private void scan(final File currentDir, final Collection<File> holder, final int depth) {
-		if (maxDepth < 0 || maxDepth >= depth) {
-			final List<File> files = Arrays.asList(currentDir.listFiles());
-			for (final File subfile : Iterables.filter(files, filePredicate)) {
-				holder.add(subfile);
-			}
-			for (final File subDir : Iterables.filter(files, directoryPredicate)) {
-				scan(subDir, holder, depth + 1);
-			}
-		}
-	}
-
 }

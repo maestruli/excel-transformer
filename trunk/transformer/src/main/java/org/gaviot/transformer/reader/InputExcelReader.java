@@ -2,6 +2,7 @@ package org.gaviot.transformer.reader;
 
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -28,8 +29,7 @@ public class InputExcelReader implements ExcelReader {
 		InputStream inputXML = new BufferedInputStream(Thread.currentThread().getContextClassLoader()
 				.getResourceAsStream(MAPPING_CONFIGURATION));
 		XLSReader mainReader = ReaderBuilder.buildFromXML(inputXML);
-		InputStream inputXLS = new BufferedInputStream(Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream(inputExcelFile.getPath()));
+		InputStream inputXLS = new BufferedInputStream(new FileInputStream(inputExcelFile));
 		List ordenes = new ArrayList();
 		Map beans = new HashMap();
 		beans.put("ordenes", ordenes);
