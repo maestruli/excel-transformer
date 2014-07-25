@@ -55,8 +55,7 @@ public class App {
 			InvalidFormatException, IOException {
 		ExcelWriter writer = new OutputExcelWriter();
 		String outputFileName = OUTPUT_DIRECTORY + File.separator + PROCESS_FILE_PREFIX + sourceExcelFileName;
-		String template = ClassLoader.getSystemResource(TEMPLATE_FILE).getFile();
-		writer.write(template, orders, outputFileName);
+		writer.write(TEMPLATE_FILE, orders, outputFileName);
 	}
 
 }
