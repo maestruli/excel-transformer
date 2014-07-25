@@ -4,19 +4,19 @@
 		<section startRow="0" endRow="0">
 			<!-- TITULOS -->
 		</section>
-		<loop startRow="1" endRow="1" items="ordenes.orden" var="orden"
-			varType="org.gaviot.transformer.model.progreso.Orden">
+		<loop startRow="1" endRow="1" items="orders.order" var="order"
+			varType="org.gaviot.transformer.model.generic.Order">
 			<section startRow="1" endRow="1">
-				<mapping row="1" col="0">orden.ordenId</mapping>
-				<mapping row="1" col="1">orden.solicitud</mapping>
-				<mapping row="1" col="2">orden.apellidoNombre</mapping>
-				<mapping row="1" col="3">orden.domicilio</mapping>
-				<mapping row="1" col="4">orden.localidad</mapping>
-				<mapping row="1" col="5">orden.aseguradora</mapping>
-				<mapping row="1" col="6">orden.bienAsegurado</mapping>
-				<mapping row="1" col="7">orden.riesgoACubrir</mapping>
-				<mapping row="1" col="8">orden.sumaAsegurada</mapping>
-				<mapping row="1" col="9">orden.vigencia</mapping>
+				<mapping row="1" col="0">order.number</mapping>
+				<mapping row="1" col="1">order.requestedDate</mapping>
+				<mapping row="1" col="2">order.clientName</mapping>
+				<mapping row="1" col="3">order.address</mapping>
+				<mapping row="1" col="4">order.location</mapping>
+				<mapping row="1" col="5">order.insurance_company</mapping>
+				<mapping row="1" col="6">order.insured_object</mapping>
+				<mapping row="1" col="7">order.covered_risk</mapping>
+				<mapping row="1" col="8">order.insured_amount</mapping>
+				<mapping row="1" col="9">order.validity</mapping>
 			</section>
 			<loopbreakcondition>
 				<rowcheck offset="0">

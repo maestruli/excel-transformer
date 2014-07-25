@@ -8,18 +8,20 @@ import java.util.Map;
 import net.sf.jxls.exception.ParsePropertyException;
 import net.sf.jxls.transformer.XLSTransformer;
 
+import org.apache.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.gaviot.transformer.model.sancor.Orden;
+import org.gaviot.transformer.model.generic.Order;
 
-public class OutputExcelWriter {
+public class OutputExcelWriter implements ExcelWriter {
+	Logger LOGGER = Logger.getLogger(OutputExcelWriter.class);
 
-	public boolean write(String template, List<Orden> ordenes, String outputExcelFile) throws ParsePropertyException,
+	public void write(String template, List<Order> orders, String outputExcelFileName) throws ParsePropertyException,
 			InvalidFormatException, IOException {
+		LOGGER.info("Writing outout file: " + outputExcelFileName);
 		Map beans = new HashMap();
-		beans.put("orden", ordenes);
+		beans.put("order", orders);
 		XLSTransformer transformer = new XLSTransformer();
-		transformer.transformXLS(template, beans, outputExcelFile);
-		return true;
+		transformer.transformXLS(template, beans, outputExcelFileName);
 	}
 
 }
