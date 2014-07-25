@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import net.sf.jxls.exception.ParsePropertyException;
 
 import org.apache.log4j.Logger;
@@ -30,6 +32,7 @@ public class App {
 		List<File> excelFiles = directoryScanner.getExcelFiles(INPUT_DIRECTORY);
 		try {
 			processExcelFiles(excelFiles);
+			infoBox("Los archivos fueron procesados. Puede consultarlos en: " + OUTPUT_DIRECTORY);
 		} catch (Exception e) {
 			LOGGER.error("An error has occurred", e);
 		}
@@ -56,6 +59,10 @@ public class App {
 		ExcelWriter writer = new OutputExcelWriter();
 		String outputFileName = OUTPUT_DIRECTORY + File.separator + PROCESS_FILE_PREFIX + sourceExcelFileName;
 		writer.write(TEMPLATE_FILE, orders, outputFileName);
+	}
+
+	public static void infoBox(String infoMessage) {
+		JOptionPane.showMessageDialog(null, infoMessage, "Clinnnnn!!!!", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }
