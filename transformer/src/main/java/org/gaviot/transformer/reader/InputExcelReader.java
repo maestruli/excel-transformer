@@ -16,7 +16,7 @@ import net.sf.jxls.reader.XLSReader;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.gaviot.transformer.model.progreso.Orden;
+import org.gaviot.transformer.model.generic.Order;
 import org.xml.sax.SAXException;
 
 public class InputExcelReader implements ExcelReader {
@@ -24,21 +24,17 @@ public class InputExcelReader implements ExcelReader {
 	final static String MAPPING_CONFIGURATION = "mapping.xml";
 	Logger LOGGER = Logger.getLogger(InputExcelReader.class);
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List<Orden> read(File inputExcelFile) throws IOException, SAXException, InvalidFormatException {
+	public List<Order> read(File inputExcelFile) throws IOException, SAXException, InvalidFormatException {
+		LOGGER.info("Reading input file: " + inputExcelFile.getName());
 		InputStream inputXML = new BufferedInputStream(Thread.currentThread().getContextClassLoader()
 				.getResourceAsStream(MAPPING_CONFIGURATION));
 		XLSReader mainReader = ReaderBuilder.buildFromXML(inputXML);
 		InputStream inputXLS = new BufferedInputStream(new FileInputStream(inputExcelFile));
 		List ordenes = new ArrayList();
 		Map beans = new HashMap();
-		beans.put("ordenes", ordenes);
+		beans.put("orders", ordenes);
 		XLSReadStatus readStatus = mainReader.read(inputXLS, beans);
-		return (List<Orden>) beans.get("ordenes");
-	}
-
-	public boolean isValidFile(File inputExcelFile) {
-		return true;
+		return (List<Order>) beans.get("orders");
 	}
 
 }

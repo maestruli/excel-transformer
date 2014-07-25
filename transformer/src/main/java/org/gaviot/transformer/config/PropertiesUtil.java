@@ -7,9 +7,6 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-/**
- * The Class PropertiesUtil.
- */
 public class PropertiesUtil {
 
 	static Properties PROPS = new Properties();
@@ -28,13 +25,6 @@ public class PropertiesUtil {
 		}
 	}
 
-	/**
-	 * Gets the property.
-	 * 
-	 * @param key
-	 *            the key
-	 * @return the property
-	 */
 	public static String getProperty(String key) {
 		return PROPS.getProperty(key);
 	}
