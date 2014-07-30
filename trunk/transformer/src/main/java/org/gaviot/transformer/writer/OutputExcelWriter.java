@@ -1,5 +1,6 @@
 package org.gaviot.transformer.writer;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -15,13 +16,16 @@ import org.gaviot.transformer.model.generic.Order;
 public class OutputExcelWriter implements ExcelWriter {
 	Logger LOGGER = Logger.getLogger(OutputExcelWriter.class);
 
-	public void write(String template, List<Order> orders, String outputExcelFileName) throws ParsePropertyException,
+	public void write(String template, List<Order> orders,
+			String outputExcelFileName) throws ParsePropertyException,
 			InvalidFormatException, IOException {
-		LOGGER.info("Writing outout file: " + outputExcelFileName);
+		LOGGER.info("Writing output file: " + outputExcelFileName);
 		Map beans = new HashMap();
 		beans.put("order", orders);
 		XLSTransformer transformer = new XLSTransformer();
-		transformer.transformXLS(template, beans, outputExcelFileName);
+		File templateFile = new File(template);
+		transformer.transformXLS(templateFile.getPath(), beans,
+				outputExcelFileName);
 	}
 
 }

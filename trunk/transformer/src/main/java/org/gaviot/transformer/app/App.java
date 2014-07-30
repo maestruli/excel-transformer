@@ -24,7 +24,7 @@ public class App {
 	static Logger LOGGER = Logger.getLogger(InputExcelReader.class);
 	static String INPUT_DIRECTORY = PropertiesUtil.getProperty("INPUT_DIRECTORY");
 	static String OUTPUT_DIRECTORY = PropertiesUtil.getProperty("OUTPUT_DIRECTORY");
-	static String TEMPLATE_FILE = "template.xls";
+	static String TEMPLATE_FILE = "." + File.separator + "res"	+ File.separator + "template.xls";
 	static String PROCESS_FILE_PREFIX = "SANCOR_";
 
 	public static void main(String[] args) {
@@ -35,6 +35,7 @@ public class App {
 			infoBox("Los archivos fueron procesados. Puede consultarlos en: " + OUTPUT_DIRECTORY);
 		} catch (Exception e) {
 			LOGGER.error("An error has occurred", e);
+			errorBox(e.getMessage());
 		}
 	}
 
@@ -65,4 +66,7 @@ public class App {
 		JOptionPane.showMessageDialog(null, infoMessage, "Clinnnnn!!!!", JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	public static void errorBox(String errorMessage) {
+		JOptionPane.showMessageDialog(null, errorMessage, "Channnnnn!!!!", JOptionPane.ERROR_MESSAGE);
+	}
 }
