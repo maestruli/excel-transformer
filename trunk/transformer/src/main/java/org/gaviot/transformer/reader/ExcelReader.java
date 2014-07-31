@@ -5,11 +5,10 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.gaviot.transformer.model.generic.Order;
 import org.xml.sax.SAXException;
 
 public interface ExcelReader {
 
-	List<Order> read(File inputExcelFile) throws IOException, SAXException, InvalidFormatException;
+	public abstract <T> List<T>  read(File inputExcelFile) throws IOException, SAXException, InvalidFormatException;
 
 }

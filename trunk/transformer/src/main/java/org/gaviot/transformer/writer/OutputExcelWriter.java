@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.gaviot.transformer.model.generic.Order;
 
-public class OutputExcelWriter implements ExcelWriter {
+public class OutputExcelWriter {
 	Logger LOGGER = Logger.getLogger(OutputExcelWriter.class);
 
 	public void write(String template, List<Order> orders,
