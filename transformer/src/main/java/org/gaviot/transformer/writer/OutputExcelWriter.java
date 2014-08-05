@@ -16,16 +16,24 @@ import org.gaviot.transformer.model.generic.Order;
 public class OutputExcelWriter {
 	Logger LOGGER = Logger.getLogger(OutputExcelWriter.class);
 
-	public void write(String template, List<Order> orders,
-			String outputExcelFileName) throws ParsePropertyException,
+	private String templateFile;
+
+	public String getTemplateFile() {
+		return templateFile;
+	}
+
+	public void setTemplateFile(String templateFile) {
+		this.templateFile = templateFile;
+	}
+
+	public void write(List<Order> orders, String outputExcelFileName) throws ParsePropertyException,
 			InvalidFormatException, IOException {
 		LOGGER.info("Writing output file: " + outputExcelFileName);
 		Map beans = new HashMap();
 		beans.put("order", orders);
 		XLSTransformer transformer = new XLSTransformer();
-		File templateFile = new File(template);
-		transformer.transformXLS(templateFile.getPath(), beans,
-				outputExcelFileName);
+		File templateFile = new File(this.templateFile);
+		transformer.transformXLS(templateFile.getPath(), beans, outputExcelFileName);
 	}
 
 }
