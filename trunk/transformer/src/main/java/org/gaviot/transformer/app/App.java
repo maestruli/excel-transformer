@@ -92,7 +92,8 @@ public class App {
 		OutputExcelWriter writer = new OutputExcelWriter();
 		String outputFileName = AppConstants.OUTPUT_DIRECTORY + File.separator + AppConstants.PROCESS_FILE_PREFIX
 				+ FilenameUtils.removeExtension(sourceExcelFileName) + AppConstants.DEFAULT_OUTPUT_EXTENSION;
-		writer.write(AppConstants.TEMPLATE_FILE, orders, outputFileName);
+		writer.setTemplateFile(AppConstants.TEMPLATE_FILE);
+		writer.write(orders, outputFileName);
 	}
 
 	public static void infoBox(String infoMessage) {

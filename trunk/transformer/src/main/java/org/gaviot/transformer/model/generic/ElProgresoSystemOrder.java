@@ -189,7 +189,7 @@ public class ElProgresoSystemOrder implements Order {
 	 */
 	@Override
 	public String getAddress() {
-		return this.type;
+		return this.name + " - " + this.type;
 	}
 
 	/* (non-Javadoc)
