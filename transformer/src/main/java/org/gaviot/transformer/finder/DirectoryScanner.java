@@ -1,24 +1,25 @@
 package org.gaviot.transformer.finder;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.filefilter.FileFilterUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
-
 public class DirectoryScanner {
 	final static String XLS_EXTENSION = ".xls";
-	final static String XLSX_EXTENSION = ".xlsx";
 
 	public List<File> getExcelFiles(String path) {
 		List<File> ret = new ArrayList<File>();
 		File directory = new File(path);
-		IOFileFilter xlsFileFilter = FileFilterUtils.andFileFilter(FileFilterUtils.fileFileFilter(),
-				FileFilterUtils.suffixFileFilter(".xls"));
-		IOFileFilter xlsxFileFilter = FileFilterUtils.andFileFilter(FileFilterUtils.fileFileFilter(),
-				FileFilterUtils.suffixFileFilter(".xlsx"));
-		java.io.FileFilter fileFilter = FileFilterUtils.orFileFilter(xlsFileFilter, xlsxFileFilter);
+		FileFilter fileFilter = new FileFilter() {
+			@Override
+			public boolean accept(File pathname) {
+				if (pathname.getPath().toLowerCase().endsWith(XLS_EXTENSION)) {
+					return true;
+				}
+				return false;
+			}
+		};
 		File[] onlyFiles = directory.listFiles(fileFilter);
 		for (File f : onlyFiles) {
 			ret.add(f);

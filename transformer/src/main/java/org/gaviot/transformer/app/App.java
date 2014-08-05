@@ -74,7 +74,7 @@ public class App {
 			}
 
 			List<Order> orders = readOrders(inputExcelFile, orderType);
-			writeOrders(orders, inputExcelFile.getPath());
+			writeOrders(orders, inputExcelFile.getName());
 		} catch (Exception e) {
 			LOGGER.error("Se produjo un error.", e);
 		}
@@ -82,7 +82,7 @@ public class App {
 	
 	private static List<Order> readOrders(File excelFile, Object orderType) throws InvalidFormatException,
 			IOException, SAXException {
-		ExcelReader reader = InputExcelReaderFactory.getInstance(orderType.getClass());
+		ExcelReader reader = InputExcelReaderFactory.getInstance(orderType);
 		List<Order> orders = reader.read(excelFile);
 		return orders;
 	}
