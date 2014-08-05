@@ -5,7 +5,7 @@
 			<!-- TITULOS -->
 		</section>
 		<loop startRow="1" endRow="1" items="orders.order" var="order"
-			varType="org.gaviot.transformer.model.generic.ElProgresoMainOrder">
+			varType="org.gaviot.transformer.model.generic.ElProgresoMailOrder">
 			<section startRow="1" endRow="1">
 				<mapping row="1" col="0">order.number</mapping>
 				<mapping row="1" col="1">order.requestedDate</mapping>

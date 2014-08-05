@@ -17,8 +17,10 @@ public class ElProgresoMailOrder implements Order {
 		super();
 	}
 
-	public ElProgresoMailOrder(String number, String requestedDate, String clientName, String address, String location,
-			String insurance_company, String insured_object, String covered_risk, String insured_amount, String validity) {
+	public ElProgresoMailOrder(String number, String requestedDate,
+			String clientName, String address, String location,
+			String insurance_company, String insured_object,
+			String covered_risk, String insured_amount, String validity) {
 		super();
 		this.number = number;
 		this.requestedDate = requestedDate;
@@ -72,7 +74,9 @@ public class ElProgresoMailOrder implements Order {
 		this.validity = validity;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getNumber()
 	 */
 	@Override
@@ -80,7 +84,9 @@ public class ElProgresoMailOrder implements Order {
 		return this.number;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getRequestedDate()
 	 */
 	@Override
@@ -88,7 +94,9 @@ public class ElProgresoMailOrder implements Order {
 		return this.requestedDate;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getClientName()
 	 */
 	@Override
@@ -96,15 +104,19 @@ public class ElProgresoMailOrder implements Order {
 		return this.clientName;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getAddress()
 	 */
 	@Override
 	public String getAddress() {
-		return this.getAddress();
+		return address;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getLocation()
 	 */
 	@Override
@@ -112,7 +124,9 @@ public class ElProgresoMailOrder implements Order {
 		return this.location;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getInsurance_company()
 	 */
 	@Override
@@ -120,7 +134,9 @@ public class ElProgresoMailOrder implements Order {
 		return this.insurance_company;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getInsured_object()
 	 */
 	@Override
@@ -128,7 +144,9 @@ public class ElProgresoMailOrder implements Order {
 		return this.insured_object;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getCovered_risk()
 	 */
 	@Override
@@ -136,7 +154,9 @@ public class ElProgresoMailOrder implements Order {
 		return this.covered_risk;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getInsured_amount()
 	 */
 	@Override
@@ -144,15 +164,19 @@ public class ElProgresoMailOrder implements Order {
 		return this.insured_amount;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getValidity()
 	 */
 	@Override
 	public String getValidity() {
-		return this.getValidity();
+		return this.validity;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getStartValidity()
 	 */
 	@Override
@@ -160,7 +184,9 @@ public class ElProgresoMailOrder implements Order {
 		return this.getValidity().substring(0, 10).trim();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.gaviot.transformer.model.generic.Order#getEndValidity()
 	 */
 	@Override
