@@ -1,0 +1,1 @@
+Transforma archivos de Excel con formato de la Aseguradora El Progreso, en archivos de Excel de entrada para la Aseguradora Sancor.
